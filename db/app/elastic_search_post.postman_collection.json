@@ -1,0 +1,105 @@
+{
+	"info": {
+		"_postman_id": "3bfc1e4a-d4b1-49b7-8c89-27000e245c34",
+		"name": "elastic_search_post",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:9200/post",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mappings\": {\r\n        \"properties\": {\r\n            \"id\": {\r\n                \"type\": \"text\"\r\n            },\r\n            \"title\": {\r\n                \"type\": \"text\"\r\n            },\r\n            \"description\": {\r\n                \"type\": \"text\"\r\n            },\r\n            \"content\": {\r\n                \"type\": \"text\"\r\n            },\r\n            \"creatorId\": {\r\n                \"type\": \"integer\"\r\n            }\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9200/post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9200/post/_doc",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"aaa000\",\r\n    \"title\": \"first post\",\r\n    \"description\": \"first description\",\r\n    \"content\": \"first content\",\r\n    \"creatorId\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9200/post/_doc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"post",
+						"_doc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9200/post/_search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9200/post/_search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"post",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9200/post",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9200/post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

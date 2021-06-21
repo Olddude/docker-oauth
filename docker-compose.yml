@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  db-app:
+    build:
+      context: ./db/app
+      dockerfile: Dockerfile
+    environment:
+      - discovery.type=single-node
+      - http.cors.allow-origin=/.*/
+      - http.cors.enabled=true
+    ports:
+      - 9200:9200
+
+  db-identity:
+    build:
+      context: ./db/identity
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_DB: identity
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5432:5432
