@@ -3,7 +3,7 @@
 CREATE TABLE accounts (
 	user_id serial PRIMARY KEY,
 	username VARCHAR ( 50 ) UNIQUE NOT NULL,
-	password VARCHAR ( 50 ) NOT NULL,
+	password_hash VARCHAR ( 255 ) NOT NULL,
 	email VARCHAR ( 255 ) UNIQUE NOT NULL,
 	created_on TIMESTAMP NOT NULL,
   last_login TIMESTAMP
@@ -27,7 +27,7 @@ CREATE TABLE account_roles (
 
 -- reader
 
-INSERT INTO accounts(username, password, email, created_on)
+INSERT INTO accounts(username, password_hash, email, created_on)
 VALUES (
   'john.doe',
   '$2y$10$cyTih/GBQUJMwpwkw3AqM.0ECT8.eCbvdyKmnlQe4tUUiamxK55GG', -- reader
@@ -46,7 +46,7 @@ VALUES (
 
 -- writer
 
-INSERT INTO accounts(username, password, email, created_on)
+INSERT INTO accounts(username, password_hash, email, created_on)
 VALUES (
   'jane.doe',
   '$2y$10$139EUOuBD3Yctza6.D7ZFuP1jeBWlLylqKPtMONsqWPi652eIOBA2', -- writer

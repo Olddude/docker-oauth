@@ -1,20 +1,10 @@
 version: '3.8'
 
 services:
-  db-app:
-    build:
-      context: ./db/app
-      dockerfile: Dockerfile
-    environment:
-      - discovery.type=single-node
-      - http.cors.allow-origin=/.*/
-      - http.cors.enabled=true
-    ports:
-      - 9200:9200
 
-  db-identity:
+  identity_database:
     build:
-      context: ./db/identity
+      context: ./src/db/identity/postgres
       dockerfile: Dockerfile
     environment:
       POSTGRES_DB: identity
@@ -22,3 +12,50 @@ services:
       POSTGRES_PASSWORD: password
     ports:
       - 5432:5432
+
+  identity_server:
+    build:
+      context: ./src/server/identity/expressjs
+      dockerfile: Dockerfile
+    environment:
+      HTTP_PORT: 3001
+    ports:
+      - 3001:3001
+    depends_on:
+      - identity_database
+
+  app_database:
+    build:
+      context: ./src/db/app/elasticsearch
+      dockerfile: Dockerfile
+    environment:
+      - discovery.type=single-node
+      - http.cors.allow-origin=/http:\/\/localhost:3000.*/
+      - http.cors.enabled=true
+    ports:
+      - 9200:9200
+
+  app_server:
+    build:
+      context: ./src/server/app/expressjs
+      dockerfile: Dockerfile
+    environment:
+      HTTP_PORT: 3000
+    ports:
+      - 3000:3000
+    depends_on:
+      - identity_server
+      - app_database
+
+  app_client:
+    build:
+      context: ./src/client/angular-webapp,
+      dockerfile: Dockerfile
+    environment:
+      APP_SERVER: http://localhost:3000
+      IDENTITY_SERVER: http://localhost:3001
+    ports:
+      - 4200:4200
+    depends_on:
+      - identity_server
+      - app_server
