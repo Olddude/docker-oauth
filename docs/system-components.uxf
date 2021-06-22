@@ -1,0 +1,33 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text></help_text><element><id>UMLActor</id><coordinates><x>504</x><y>660</y><w>60</w><h>110</h></coordinates><panel_attributes>Reader</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>504</x><y>450</y><w>130</w><h>160</h></coordinates><panel_attributes>lt=-
+</panel_attributes><additional_attributes>10;140;110;140;110;10</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>564</x><y>360</y><w>100</w><h>100</h></coordinates><panel_attributes>AppServer
+valign=center
+--
+ExpressJS
+PORT 3000</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>264</x><y>360</y><w>100</w><h>100</h></coordinates><panel_attributes>IdentityServer
+valign=center
+--
+ExpressJS
+PORT 3001</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLActor</id><coordinates><x>357</x><y>660</y><w>60</w><h>110</h></coordinates><panel_attributes>Writer</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>297</x><y>450</y><w>130</w><h>160</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>110;140;10;140;10;10</additional_attributes></element><element><id>Text</id><coordinates><x>277</x><y>190</y><w>70</w><h>70</h></coordinates><panel_attributes>customelement=
+// Text Elemnt
+// DB Symbol
+drawArc(0,0,width,height*2/5,0,180,true) fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)
+drawArc(0,0,width,height*2/5,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawRectangle(0,(height+0.5)/5,width,(height)*3/5-1) fg=#929292 bg=#222222 //Parameters (x, y, width, height)
+drawLine(0,height/5,0,height*4/5)fg=black //Parameters (x1, y1, x2, y2)
+drawLine(width,height/5,width,height*4/5)fg=black //Parameters (x1, y1, x2, y2)
+drawArc(0,height*1/5,width,height*2/5,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawArc(0,height*2/5,width,height*2/5,180,180,true) fg=black //Parameters (x, y, width, height, start, extent, open)
+drawArc(0,height*3/5,width,height*2/5,180,180,true) fg=black bg=#222222 //Parameters (x, y, width, height, start, extent, open)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>357</x><y>400</y><w>230</w><h>30</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>10;10;210;10</additional_attributes></element><element><id>Text</id><coordinates><x>257</x><y>260</y><w>110</w><h>60</h></coordinates><panel_attributes>IdentityDatabase
+style=wordwrap
+valign=center
+--
+PostgresSQL
+PORT 5432</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>610</x><y>260</y><w>30</w><h>120</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;100;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>300</x><y>310</y><w>30</w><h>70</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>190</x><y>100</y><w>550</w><h>680</h></coordinates><panel_attributes>System
+halign=left</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>410</x><y>540</y><w>100</w><h>100</h></coordinates><panel_attributes>WebClient
+valign=center
+&lt;&lt;port 80&gt;&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>560</x><y>210</y><w>110</w><h>60</h></coordinates><panel_attributes>AppDatabase
+valign=center
+--
+ElasticSearch
+PORT 9200</panel_attributes><additional_attributes></additional_attributes></element></diagram>
