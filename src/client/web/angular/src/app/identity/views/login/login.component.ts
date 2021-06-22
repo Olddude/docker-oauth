@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder } from '@angular/forms';
+import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { IdentityService } from '../../identity.service';
 
 @Component({
@@ -10,8 +10,26 @@ import { IdentityService } from '../../identity.service';
 export class LoginComponent {
 
   loginForm = this.formBuilder.group({
-    username: this.formBuilder.control(''),
-    password: this.formBuilder.control('')
+    username: this.formBuilder.control(
+      '',
+      {
+        validators: [
+          Validators.minLength(8),
+          Validators.maxLength(50)
+        ],
+        updateOn: 'change'
+      }
+    ),
+    password: this.formBuilder.control(
+      '',
+      {
+        validators: [
+          Validators.minLength(8),
+          Validators.maxLength(50)
+        ],
+        updateOn: 'change'
+      }
+    )
   });
 
   constructor(
@@ -20,9 +38,8 @@ export class LoginComponent {
   ) { }
 
   async onSubmit(form: AbstractControl) {
-    const model = form.value;
-    const username = model.username;
-    const password = model.password;
+    const username = form.value.username;
+    const password = form.value.password;
     await this.service.login(username, password).toPromise();
   }
 

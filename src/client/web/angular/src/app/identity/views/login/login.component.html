@@ -4,16 +4,16 @@
       <app-logo></app-logo>
     </section>
     <section class="row center">
-      <input pInputText formGroupName="username" placeholder="username" type="text">
+      <input pInputText formControlName="username" placeholder="username" type="text">
     </section>
     <section class="row center">
-      <input pInputText formGroupName="password" placeholder="password" type="password">
+      <input pInputText formControlName="password" placeholder="password" type="password">
     </section>
     <section class="row center">
       <a id="register-link" [routerLink]="['/register']">register</a>
     </section>
     <section class="row center">
-      <button pButton type="submit" [disabled]="loginForm.invalid">login</button>
+      <button pButton [disabled]="loginForm.invalid" label="login" type="submit"></button>
     </section>
   </section>
 </form>
