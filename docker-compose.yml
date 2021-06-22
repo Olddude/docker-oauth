@@ -49,13 +49,13 @@ services:
 
   app_client:
     build:
-      context: ./src/client/angular-webapp,
+      context: ./src/client/angular-webapp
       dockerfile: Dockerfile
     environment:
       APP_SERVER: http://localhost:3000
       IDENTITY_SERVER: http://localhost:3001
     ports:
-      - 4200:4200
+      - 80:80
     depends_on:
       - identity_server
       - app_server

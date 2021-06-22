@@ -1,7 +1,6 @@
 FROM node AS build
 WORKDIR /app
-COPY ./ .
-RUN envsubst < ./src/environments/environment.prod.ts > ./src/environments/environment.prod.ts
+COPY . .
 RUN npm install --legacy-peer-deps
 RUN npm run build -- --configuration production
 

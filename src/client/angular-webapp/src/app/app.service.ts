@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class AppService {
 
   constructor(
@@ -14,4 +12,5 @@ export class AppService {
   fetch() {
     return this.http.get(environment.appServer);
   }
+
 }

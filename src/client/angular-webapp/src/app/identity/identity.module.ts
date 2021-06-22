@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IdentityComponent } from './identity.component';
-
+import { IdentityRoutingModule } from './identity-routing.module';
 
 
 @NgModule({
@@ -9,7 +9,8 @@ import { IdentityComponent } from './identity.component';
     IdentityComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    IdentityRoutingModule
   ]
 })
 export class IdentityModule { }

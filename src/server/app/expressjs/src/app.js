@@ -15,9 +15,6 @@ app.use(cors({ origin: '*' }))
 // ROUTES
 
 app.use('/', require('./routes'))
-app.use('/login', require('./routes/login'))
-app.use('/accounts', require('./routes/accounts'))
-app.use('/roles', require('./routes/roles'))
-app.use('/account_roles', require('./routes/account_roles'))
+app.use('/post', require('./routes/post'))
 
 module.exports = app
