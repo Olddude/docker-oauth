@@ -7,6 +7,10 @@ import { ButtonModule } from 'primeng/button';
 import { RouterModule } from '@angular/router';
 import { RegisterComponent } from './views/register/register.component';
 import { LogoComponent } from './components/logo/logo.component';
+import { StoreModule } from '@ngrx/store';
+import { identityFeatureKey, reducer } from './store/identity.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { IdentityEffects } from './store/identity.effects';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,9 @@ import { LogoComponent } from './components/logo/logo.component';
     ReactiveFormsModule,
     InputTextModule,
     ButtonModule,
-    RouterModule
+    RouterModule,
+    StoreModule.forFeature(identityFeatureKey, reducer),
+    EffectsModule.forFeature([IdentityEffects])
   ],
   exports: [
     LoginComponent,
