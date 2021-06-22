@@ -13,4 +13,9 @@ export class IdentityService {
     return this.http.get(environment.identityServer);
   }
 
+  login(username: string, password: string) {
+    const url = `${environment.identityServer}/login`;
+    return this.http.post(url, { username, password });
+  }
+
 }

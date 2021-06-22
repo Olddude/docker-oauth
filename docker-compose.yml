@@ -24,38 +24,38 @@ services:
     depends_on:
       - identity_database
 
-  app_database:
+  post_database:
     build:
-      context: ./src/db/app/elasticsearch
+      context: ./src/db/post/elasticsearch
       dockerfile: Dockerfile
     environment:
       - discovery.type=single-node
-      - http.cors.allow-origin=/http:\/\/localhost:3000.*/
+      - http.cors.allow-origin=/.*/
       - http.cors.enabled=true
     ports:
       - 9200:9200
 
-  app_server:
+  post_server:
     build:
-      context: ./src/server/app/expressjs
+      context: ./src/server/post/expressjs
       dockerfile: Dockerfile
     environment:
-      HTTP_PORT: 3000
+      HTTP_PORT: 3002
     ports:
-      - 3000:3000
+      - 3002:3002
     depends_on:
       - identity_server
-      - app_database
+      - post_database
 
-  app_client:
+  web_client:
     build:
-      context: ./src/client/angular-webapp
+      context: ./src/client/web/angular
       dockerfile: Dockerfile
     environment:
-      APP_SERVER: http://localhost:3000
       IDENTITY_SERVER: http://localhost:3001
+      POST_SERVER: http://localhost:3002
     ports:
-      - 80:80
+      - 3000:80
     depends_on:
       - identity_server
-      - app_server
+      - post_server

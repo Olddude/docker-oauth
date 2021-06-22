@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { IdentityGuard } from './identity/identity.guard';
+import { LoginComponent } from './identity/views/login/login.component';
+import { RegisterComponent } from './identity/views/register/register.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'identity', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   {
-    path: 'identity',
-    loadChildren: () => import('./identity/identity.module')
-      .then(m => m.IdentityModule)
+    path: 'post',
+    canActivate: [IdentityGuard],
+    loadChildren: () => import('./post/post.module')
+      .then(m => m.PostModule)
   }
 ];
 

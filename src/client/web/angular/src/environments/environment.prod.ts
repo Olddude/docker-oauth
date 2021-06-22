@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  appServer: 'http://localhost:3000',
-  identityServer: 'http://localhost:3001'
+  identityServer: 'http://localhost:3001',
+  postServer: 'http://localhost:3002'
 };

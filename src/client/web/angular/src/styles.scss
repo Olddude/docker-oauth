@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+
+* {
+  font-family: sans-serif;
+}
+
+body {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.column {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  * {
+    margin-bottom: .2rem;
+  }
+}
+
+.row {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  * {
+    margin-right: .2rem;
+  }
+}
+
+.center {
+  align-items: center;
+  justify-content: center;
+}
+
+.label {
+  border: 1px solid #ced4da;
+  border-radius: 3px;
+}
