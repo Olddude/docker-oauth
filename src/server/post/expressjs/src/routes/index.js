@@ -1,8 +1,12 @@
 const router = require('express').Router()
 
-router.get('', (_request, response) => {
-  response.json({
-    info: 'Post ExpressJS Server'
+router.use('/auth', require('./auth'))
+router.use('/post', require('./post'))
+
+router.get('', (req, res) => {
+  res.json({
+    info: 'Post ExpressJS Server',
+    user: req.user
   })
 })
 
