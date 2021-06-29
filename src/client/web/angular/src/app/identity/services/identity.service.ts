@@ -13,7 +13,7 @@ export class IdentityService {
   ) { }
 
   login(username: string, password: string) {
-    const authorization = `Basic ${btoa(username + ':' + password)}`
+    const authorization = `Basic ${btoa(username + ':' + password)}`;
     this.store.dispatch(login({ authorization }));
   }
 
