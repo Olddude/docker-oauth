@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   identityServer: 'http://localhost:3001',
-  postServer: 'http://localhost:3002'
+  resourceServer: 'http://localhost:3002'
 };
 
 /*

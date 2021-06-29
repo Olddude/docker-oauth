@@ -24,9 +24,9 @@ services:
     depends_on:
       - identity_database
 
-  post_database:
+  resource_database:
     build:
-      context: ./src/db/post/elasticsearch
+      context: ./src/db/resource/elasticsearch
       dockerfile: Dockerfile
     environment:
       - discovery.type=single-node
@@ -35,9 +35,9 @@ services:
     ports:
       - 9200:9200
 
-  post_server:
+  resource_server:
     build:
-      context: ./src/server/post/expressjs
+      context: ./src/server/resource/expressjs
       dockerfile: Dockerfile
     environment:
       HTTP_PORT: 3002
@@ -45,7 +45,7 @@ services:
       - 3002:3002
     depends_on:
       - identity_server
-      - post_database
+      - resource_database
 
   web_client:
     build:
@@ -53,9 +53,9 @@ services:
       dockerfile: Dockerfile
     environment:
       IDENTITY_SERVER: http://localhost:3001
-      POST_SERVER: http://localhost:3002
+      RESOURCE_SERVER: http://localhost:3002
     ports:
       - 3000:80
     depends_on:
       - identity_server
-      - post_server
+      - resource_server

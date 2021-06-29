@@ -1,1 +1,0 @@
-# Post Database Elasticsearch (Lucene)

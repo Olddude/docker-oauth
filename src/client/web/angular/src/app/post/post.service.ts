@@ -14,7 +14,7 @@ export class PostService {
   ) { }
 
   fetch() {
-    const url = `${environment.postServer}/post`;
+    const url = `${environment.resourceServer}/post`;
     return this.store.select(selectData).pipe(
       switchMap(identity => this.http.get(url, {
         headers: {
