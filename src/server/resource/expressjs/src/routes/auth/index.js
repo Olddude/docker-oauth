@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const uriTemplate = require('uri-templates')
-const request = require('request-promise')
+const got = require('got')
 
 router.use('/callback', require('./callback'))
 
@@ -18,7 +18,7 @@ router.get('', async (_req, res, next) => {
       client_id: 'post-server',
       redirect_url
     })
-  await request(url)
+  await got.get(url)
     .then(authResponse => {
       res.json(JSON.parse(authResponse))
     })

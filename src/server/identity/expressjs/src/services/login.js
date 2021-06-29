@@ -19,7 +19,12 @@ module.exports = async function login(username, password) {
         lastLogin: user?.last_login,
         createdOn: user?.created_on
       }
-      return { access_token: jwt.sign(userData, serverPublicKey) }
+      return {
+        access_token: jwt.sign(
+          userData,
+          serverPublicKey
+        )
+      }
     }
   }
   return undefined
