@@ -14,3 +14,16 @@ export const loginFailure = createAction(
   '[Identity] Login Failure',
   props<{ error: any }>()
 );
+
+export const navigate = createAction(
+  '[Identity] Navigate',
+  props<{ path: string[] }>()
+);
+
+export const navigateSuccess = createAction(
+  '[Identity] Navigate Success'
+);
+
+export const navigateFailure = createAction(
+  '[Identity] Navigate Failure'
+);

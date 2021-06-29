@@ -11,12 +11,14 @@ import { StoreModule } from '@ngrx/store';
 import { identityFeatureKey, reducer } from './store/identity.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { IdentityEffects } from './store/identity.effects';
+import { UnauthorizedComponent } from './views/unauthorized/unauthorized.component';
 
 @NgModule({
   declarations: [
+    LogoComponent,
     LoginComponent,
     RegisterComponent,
-    LogoComponent
+    UnauthorizedComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { IdentityEffects } from './store/identity.effects';
   ],
   exports: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UnauthorizedComponent
   ]
 })
 export class IdentityModule { }

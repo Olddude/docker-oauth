@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, distinctUntilChanged, map, switchMap, tap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { catchError, map, switchMap } from 'rxjs/operators';
+import { from, of } from 'rxjs';
 
 import * as IdentityActions from './identity.actions';
 import { environment } from 'src/environments/environment';
@@ -16,16 +16,14 @@ export class IdentityEffects {
   login$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(IdentityActions.login),
-      map(action => ({
-        url: `${environment.identityServer}/login`,
-        options: {
+      switchMap(action => {
+        const url = `${environment.identityServer}/login`;
+        const options = {
           headers: {
             Authorization: action.authorization
           }
-        }
-      })),
-      switchMap(_ => {
-        return this.http.post(_.url, undefined, _.options).pipe(
+        };
+        return this.http.post(url, undefined, options).pipe(
           map(data => IdentityActions.loginSuccess({ data })),
           catchError(error => of(IdentityActions.loginFailure({ error })))
         );
@@ -33,13 +31,22 @@ export class IdentityEffects {
     )
   });
 
+  navigate$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(IdentityActions.navigate),
+      switchMap(action => {
+        return from(this.router.navigate(action.path)).pipe(
+          map(() => IdentityActions.navigateSuccess()),
+          catchError(() => of(IdentityActions.navigateFailure()))
+        );
+      })
+    )
+  })
+
   redirectToPost$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(IdentityActions.loginSuccess),
-      distinctUntilChanged(),
-      tap(async () => {
-        await this.router.navigate(['/post'])
-      })
+      switchMap(() => of(IdentityActions.navigate({ path: ['/post'] })))
     );
   })
 

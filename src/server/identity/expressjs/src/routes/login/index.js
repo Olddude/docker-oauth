@@ -4,14 +4,14 @@ const extractAuth = require('../../services/extract-auth')
 
 router.post('', async (request, response) => {
   const { username, password } = extractAuth(request.headers.authorization)
-  const user = await login(username, password)
-  if (user) {
-    response.json(user)
+  const accessTokenResponse = await login(username, password)
+  if (accessTokenResponse) {
+    response.json(accessTokenResponse)
   } else {
-    response.status(401)
-    response.json({ message: 'invalid login' })
+    response.status(401).json({
+      message: 'Unauthorized'
+    })
   }
-
 })
 
 module.exports = router
