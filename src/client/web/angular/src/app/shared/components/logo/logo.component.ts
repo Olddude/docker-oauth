@@ -9,8 +9,10 @@ import { Component } from '@angular/core';
     </svg>
   `,
   styles: [`
-    svg {
-      height: 200px;
+    :host {
+      svg {
+        height: 200px;
+      }
     }
   `]
 })

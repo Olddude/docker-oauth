@@ -10,7 +10,7 @@ export class PostService {
 
   constructor(
     private readonly http: HttpClient,
-    private readonly store: Store<any>,
+    private readonly store: Store<any>
   ) { }
 
   fetch() {
@@ -22,6 +22,10 @@ export class PostService {
         }
       }))
     );
+  }
+
+  reload() {
+    window.location.reload();
   }
 
 }

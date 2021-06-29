@@ -22,7 +22,10 @@ module.exports = async function login(username, password) {
       return {
         access_token: jwt.sign(
           userData,
-          serverPublicKey
+          serverPublicKey,
+          {
+            expiresIn: 30 * 1000 // thirty seconds
+          }
         )
       }
     }

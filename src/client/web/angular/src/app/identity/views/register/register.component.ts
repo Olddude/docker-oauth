@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  template: `
+    <p>register works!</p>
+  `,
+  styles: [``]
 })
 export class RegisterComponent {
 }

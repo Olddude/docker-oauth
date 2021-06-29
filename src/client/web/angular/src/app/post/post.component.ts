@@ -1,10 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PostService } from './post.service';
 
 @Component({
   selector: 'app-post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss']
+  template: `
+    <div id="post">
+      <header>
+        <div>Post Component</div>
+      </header>
+      <main>
+        <div>{{ data$ | async | json }}</div>
+      </main>
+      <footer>
+        <a (click)="reload()">reload</a>
+      </footer>
+    </div>
+  `,
+  styles: [`
+    :host {
+      #post {
+        padding: 1rem;
+      }
+    }
+  `]
 })
 export class PostComponent {
 
@@ -13,5 +31,9 @@ export class PostComponent {
   constructor(
     private readonly service: PostService
   ) { }
+
+  reload() {
+    this.service.reload();
+  }
 
 }
